@@ -23,3 +23,29 @@ jobs:
 
       - name: Push docker image
         run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/ssio-project-gateway:latest
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+   
+    steps:
+    - name: Deploy over SSH
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.VM_HOST }}
+        username: ${{ secrets.VM_USER }}
+        key: ${{ secrets.VM_SSH_KEY_PRIVATE }}
+        script: |
+          cd ssio-project-full-backend/docker-compose
+
+          echo "Stopping old containers..."
+          docker compose -f orion-wilma.yml down
+
+          echo "Pulling latest images..."
+          docker compose -f orion-wilma.yml pull
+
+          echo "Starting services..."
+          docker compose -f orion-wilma.yml --env-file .env up -d
+
+          echo "Clean unused images..."
+          docker image prune -f
