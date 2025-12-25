@@ -32,9 +32,9 @@ jobs:
     - name: Deploy over SSH
       uses: appleboy/ssh-action@v1.0.3
       with:
-        host: ${{ secrets.VM_HOST }}
-        username: ${{ secrets.VM_USER }}
-        key: ${{ secrets.VM_SSH_KEY_PRIVATE }}
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USER }}
+        key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
         script: |
           cd ssio-project-full-backend/docker-compose
 
