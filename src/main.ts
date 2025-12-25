@@ -20,7 +20,7 @@ async function bootstrap() {
 
   // Setup Swagger documentation
   const config = new DocumentBuilder()
-    .setTitle('SSIO Project Gateway API')
+    .setTitle('SSIO Project Gateway API - TESTING CI/CD ')
     .setDescription(
       'API Gateway for FIWARE ecosystem integration. This gateway provides unified access to:\n\n' +
       '- **Keyrock**: Identity Management (Users, Roles, Permissions)\n' +
