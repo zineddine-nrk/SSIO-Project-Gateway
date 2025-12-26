@@ -36,16 +36,21 @@ jobs:
         username: ${{ secrets.EC2_USER }}
         key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
         script: |
-          cd ssio-project-full-backend/docker-compose
+          cd ssio-project-full-backend
+
+          # si .env n'existe pas → le créer
+          if [ ! -f .env ]; then
+            cp .env.example .env
+          fi
 
           echo "Stopping old containers..."
-          docker compose -f orion-wilma.yml down
+          docker compose -f docker-compose/orion-wilma.yml --env-file .env down -v
 
           echo "Pulling latest images..."
-          docker compose -f orion-wilma.yml pull
+          docker compose -f docker-compose/orion-wilma.yml --env-file .env pull
 
           echo "Starting services..."
-          docker compose -f orion-wilma.yml --env-file .env up -d
+          docker compose -f docker-compose/orion-wilma.yml --env-file .env up -d
 
           echo "Clean unused images..."
           docker image prune -f
