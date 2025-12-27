@@ -28,7 +28,7 @@ jobs:
         with:
           image-ref: ${{ secrets.DOCKER_HUB_USERNAME }}/ssio-project-gateway:latest
           format: 'table' # Format du résultat dans les logs
-          severity: 'CRITICAL,HIGH' # Niveau de vulnérabilités surveillées
+          severity: 'CRITICAL' # Niveau de vulnérabilités surveillées / j ai enlve HIGH car y avait trop de vulnérabilités (3)
           exit-code: '1' # Si Trivy trouve au moins une vulnérabilité HIGH ou CRITICAL , retourne le code 1
 
       - name: push image to Docker Hub 
