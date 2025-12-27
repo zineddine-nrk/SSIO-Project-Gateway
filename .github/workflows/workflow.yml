@@ -11,8 +11,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-       with:
-        fetch-depth: 0 # Récupérer tout l'historique des commits pour les tags  
+        with:
+          fetch-depth: 0 # Récupérer tout l'historique des commits pour les tags  
 
       - name: Log in Docker Hub
         uses: docker/login-action@v3
@@ -32,7 +32,7 @@ jobs:
           exit-code: '1' # Si Trivy trouve au moins une vulnérabilité HIGH ou CRITICAL , retourne le code 1
 
       - name: push image to Docker Hub 
-       run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/ssio-project-gateway:latest
+         run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/ssio-project-gateway:latest
 
 
 
