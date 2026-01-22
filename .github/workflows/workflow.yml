@@ -48,8 +48,9 @@ jobs:
         username: ${{ secrets.EC2_USER }} # ubuntu user
         key: ${{ secrets.EC2_SSH_PRIVATE_KEY }} # Clé privée SSH de l'instance EC2 pour se connecter.
         script: |
+          sudo -i 
           cd ssio-project-full-backend
-          sudo -i
+          
 
           # si .env n'existe pas → le créer
           if [ ! -f .env ]; then
