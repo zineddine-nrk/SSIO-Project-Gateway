@@ -6,6 +6,7 @@ import { KeyrockAuthService } from './keyrock/services/auth.service';
 import { KeyrockUserService } from './keyrock/services/user.service';
 import { KeyrockRoleService } from './keyrock/services/role.service';
 import { KeyrockPermissionService } from './keyrock/services/permission.service';
+import { KeyrockIoTSensorService } from './keyrock/services/iot-sensor.service';
 import { IoTAgentService } from './iot-agent/iot-agent.service';
 import { PepProxyService } from './pep-proxy/pep-proxy.service';
 import { SessionModule } from '../services/session.module';
@@ -23,6 +24,7 @@ import { SessionModule } from '../services/session.module';
     KeyrockUserService,
     KeyrockRoleService,
     KeyrockPermissionService,
+    KeyrockIoTSensorService,
     IoTAgentService,
     PepProxyService,
   ],
@@ -32,6 +34,7 @@ import { SessionModule } from '../services/session.module';
     KeyrockUserService,
     KeyrockRoleService,
     KeyrockPermissionService,
+    KeyrockIoTSensorService,
     IoTAgentService,
     PepProxyService,
   ],

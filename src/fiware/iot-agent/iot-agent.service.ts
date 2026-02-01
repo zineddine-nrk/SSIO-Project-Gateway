@@ -75,6 +75,10 @@ export class IoTAgentService {
     return this.forwardRequest('DELETE', '/iot/services', undefined, queryParams);
   }
 
+  async updateServiceGroup(body: any, queryParams?: Record<string, any>): Promise<any> {
+    return this.forwardRequest('PUT', '/iot/services', body, queryParams);
+  }
+
   /**
    * Devices API
    */

@@ -1,11 +1,14 @@
-import { Controller, Post, Get, Put, Delete, Body, Param } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiResponse, ApiParam } from '@nestjs/swagger';
+import { Controller, Post, Get, Put, Delete, Body, Param, UseGuards } from '@nestjs/common';
+import { ApiTags, ApiOperation, ApiResponse, ApiParam, ApiBearerAuth } from '@nestjs/swagger';
 import { IoTService } from '../../services/iot.service';
 import { CreateDeviceDto } from '../../fiware/iot-agent/dto';
 import { UpdateDeviceDto } from './dto/update-device.dto';
+import { JwtAuthGuard } from '../../guards/jwt-auth.guard';
 
 @ApiTags('IoT Devices')
+@ApiBearerAuth('JWT-auth')
 @Controller('iot/devices')
+@UseGuards(JwtAuthGuard)
 export class DevicesController {
   constructor(private readonly iotService: IoTService) {}
 

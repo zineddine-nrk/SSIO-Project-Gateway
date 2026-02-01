@@ -24,6 +24,10 @@ export class IoTService {
     return this.iotAgentService.deleteServiceGroup(queryParams);
   }
 
+  async updateServiceGroup(body: any, queryParams?: Record<string, any>): Promise<any> {
+    return this.iotAgentService.updateServiceGroup(body, queryParams);
+  }
+
   /**
    * Devices
    */
